@@ -64,8 +64,9 @@ void do_one_thing(int *pnum_times) {
     work++; /* increment, but not write */
     for (k = 0; k < 500000; k++)
       ;                 /* long cycle */
+    printf("after loop (one thing) counter = %d\n", work);
     *pnum_times = work; /* write back */
-	// pthread_mutex_unlock(&mut);
+	 //pthread_mutex_unlock(&mut);
   }
 }
 
@@ -74,15 +75,16 @@ void do_another_thing(int *pnum_times) {
   unsigned long k;
   int work;
   for (i = 0; i < 50; i++) {
-    // pthread_mutex_lock(&mut);
+     //pthread_mutex_lock(&mut);
     printf("doing another thing\n");
     work = *pnum_times;
     printf("counter = %d\n", work);
     work++; /* increment, but not write */
     for (k = 0; k < 500000; k++)
       ;                 /* long cycle */
+      printf("after loop (another thing) counter = %d\n", work);
     *pnum_times = work; /* write back */
-    // pthread_mutex_unlock(&mut);
+     //pthread_mutex_unlock(&mut);
   }
 }
 
